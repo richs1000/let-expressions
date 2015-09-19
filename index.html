@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" type="text/css" href="style/style.css"/>
+		<link rel="stylesheet" type="text/css" href="libs/bootstrap/css/bootstrap.min.css">
+		<title>Let Expressions</title>
+
+	</head>
+	<body>
+		<div class="starter-template">
+			<div class="container">
+				 <!-- This is the first draft. Just to see what it should look like -->
+				 <h3>What does silly3 evaluate to when called?</h3>
+				 <p>fun silly3() =</p>
+				 <p>let</p>
+				 <p>val x = (let val x = 5 in x + 10 end);</p>
+				 <p>in</p>
+				 <p>(x, let val x = 2 in x end, let val x = 10 in  let val x = 2 in x end end)</p>
+				 <p>end</p>
+
+			</div>
+
+			<div class="answers">
+				<form action="">
+					<fieldset>
+						<p>
+							<input type="checkbox" id="answer1" value="first_checkbox" />(15, 2, 2)
+						</p>
+
+						<p>
+							<input type="checkbox" id="answer2" value="second_checkbox" /> (5, 5, 5)
+						</p>
+
+						<p>
+							<input type="checkbox" id="answer3" value="third_checkbox" /> (15, 2, 10)
+						</p>
+
+						<p>
+							<input type="checkbox" id="answer4" value="fourth_checkbox"/> (5, 2, 10)
+						</p>
+					</fieldset>
+					
+				</form>
+				
+
+			</div>
+		</div>
+
+		<script src="https://d1rpkia8qpfj4t.cloudfront.net/js/pipit-0.62.min.js"></script>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="libs/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="libs/bootstrap/js/bootstrap.min.js"></script>
+
+	</body>
+</html>
