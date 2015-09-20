@@ -1,41 +1,27 @@
 /*
  * Tyler Deans
- * 9/14/15
+ * 9/20/15
  * model.js
-*/
+ */
 
-function SimModel(_controller, _attrs) {
-	// save a link to the controller
-	this.controller = _controller;
+function SimModel(_controller) {
+    // save a link to the controller
+    this.controller = _controller;
 
-	this.randNumbers = [];
+    this.randNumbers = [];
 
-	// we want SimModel to inherit from CapiModel so SmartSparrow
-	// can access values within the model - here I call the CapiModel
-	// constructor
-	pipit.CapiAdapter.CapiModel.call(this, _attrs)
-	
-}
+    // we want SimModel to inherit from CapiModel so SmartSparrow
+    // can access values within the model - here I call the CapiModel
+    // constructor
+    pipit.CapiAdapter.CapiModel.call(this, _attrs)
 
-function emptyOutArray(myArray) {
-	myArray.length = 0;
-}
-
-SimModel.prototype.randomFringe = function(_fringeLength) {
-	// start with an empty fringe
-	this.fringeNodes = [];
-	// for each node in the fringe
-	for (var i = 0; i < _fringeLength; i++) {
-		// add the new node to the fringe list
-		this.fringeNodes.push(this.randomNode());
-	}
 }
 
 // Returns a random integer between min (included) and max (excluded)
 // Using Math.round() will give you a non-uniform distribution!
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
+    return Math.floor(Math.random() * (max - min)) + min;
 }
 
 /* I need to find a way to generate multiple varaiation of the let expression question
@@ -53,47 +39,66 @@ fun silly3() =
 */
 
 // Implements the let expression 
-function let() {
-	var x1 = function () {
-		var x = getRandomInt(1, 21);
-		this.randNumbers.push(x);
-		var num = getRandomInt(1, 21);
-		this.randNumbers.push(num);
-		return x + num;
-	}
+function letExp() {
+    var x1 = function() {
+        var x = getRandomInt(1, 21);
+        this.randNumbers.push(x);
+        var num = getRandomInt(1, 21);
+        this.randNumbers.push(num);
+        return x + num;
+    }
 
-	var x2 = function() {
-		var x = getRandomInt(1, 21);
-		this.randNumbers.push(x);
-		return x;
-	}
+    var x2 = function() {
+        var x = getRandomInt(1, 21);
+        this.randNumbers.push(x);
+        return x;
+    }
 
-	var x3 = function() {
-		var x = getRandomInt(1, 21);
-		this.randNumbers.push(x);
-		
-		x = function() {
-			var n = getRandomInt(1, 21);
-			this.randNumbers.push(n);
-			return n;
-		}
-		return x();
-	}
+    var x3 = function() {
+        var x = getRandomInt(1, 21);
+        this.randNumbers.push(x);
 
-	var xs = [x1(), x2(), x3()];
-	return xs;
+        x = function() {
+            var n = getRandomInt(1, 21);
+            this.randNumbers.push(n);
+            return n;
+        }
+        return x();
+    }
+
+    var xs = [x1(), x2(), x3()];
+    return xs;
 }
 
+function getAnswer() {
+    this.answer = letExp();
+    return this.answer;
+}
+
+function answerChoices() {
+    // First answer choice is the right answer (this.answer)
+
+    // Second answer choice
+    var answer1 = [this.randNumbers[0], this.randNumbers[0], this.randNumbers[0]];
+
+    // Third answer choice
+    var answer2 = [this.answer[0], this.randomNumbers[2], this.randnumbers[3]];
+
+    // Fourth answer choice
+    var answer3 = [this.randNumbers[0], this.randNumbers[2], randNumbers[3]];
+
+    var answers = [this.answer, answer1, answer2, answer3];
+    return answers
+}
 
 // Returns the let expression in a string 
 // The random numbers are generated an put into the string
 function getLetExpression() {
 
-	var letExpression = "let val x = (let val x = " + this.randNumbers[0] + " in x + " + this.randNumbers[1] + 
-			" end); in (x, let val x = " + this.randNumbers[2] + " in x end, let val x = " 
-			+ this.randNumbers[3] + "in let val x = " + this.randNumbers[5] + " in x end end) end";
-	
-	return letExpression;
+    var letExpression = "let val x = (let val x = " + this.randNumbers[0] + " in x + " + this.randNumbers[1] +
+        " end); in (x, let val x = " + this.randNumbers[2] + " in x end, let val x = " + this.randNumbers[3] + "in let val x = " + this.randNumbers[5] + " in x end end) end";
+
+    return letExpression;
 }
 
 
@@ -105,10 +110,6 @@ SimModel.prototype = new pipit.CapiAdapter.CapiModel;
 
 
 SimModel.prototype.initializeModel = function() {
-	// the fringe is used to answer questions
-	//this.fringe = new FringeModel(this);
-	// the question bank stores the questions, the answers and the student's
-	// answer history
-	this.questionBank = new QuestionBankModel(this, this.get('numerator'),
-				this.get('denominator'));
+
+    this.questionBank = new QuestionBankModel(this, this.answerChoices(), this.getAnswer(), this.getLetExpression());
 }
