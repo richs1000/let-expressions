@@ -8,12 +8,10 @@ function SimModel(_controller) {
     // save a link to the controller
     this.controller = _controller;
 
-    this.randNumbers = [];
-
     // we want SimModel to inherit from CapiModel so SmartSparrow
     // can access values within the model - here I call the CapiModel
     // constructor
-    pipit.CapiAdapter.CapiModel.call(this, _attrs)
+    pipit.CapiAdapter.CapiModel.call(this)
 
 }
 
@@ -82,12 +80,13 @@ function answerChoices() {
     var answer1 = [this.randNumbers[0], this.randNumbers[0], this.randNumbers[0]];
 
     // Third answer choice
-    var answer2 = [this.answer[0], this.randomNumbers[2], this.randnumbers[3]];
+    var answer2 = [this.answer[0], this.randNumbers[2], this.randNumbers[3]];
 
     // Fourth answer choice
     var answer3 = [this.randNumbers[0], this.randNumbers[2], randNumbers[3]];
 
     var answers = [this.answer, answer1, answer2, answer3];
+
     return answers
 }
 
