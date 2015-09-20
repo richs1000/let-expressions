@@ -14,11 +14,14 @@ QuestionBankView.prototype.presentQuestion = function(_question) {
 
 QuestionBankView.prototype.presentAnswerChoices = function() {
     // displays the answer choices
-    $("answer1").html(this.questionBankMod.choices[0]);
+
 }
 
 var main = function() {
-    $("answer1").text(QuestionBankView.presentAnswerChoices);
+    $("input[value='answer1']").next().html("Answer1");
+    $("input[value='answer2']").next().html("Answer2");
+    $("input[value='answer3']").next().html("Answer3");
+    $("input[value='answer4']").next().html("Answer4");
 }
 
 $(document).ready(main);
