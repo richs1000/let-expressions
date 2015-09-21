@@ -1,7 +1,7 @@
  /*
   * Tyler Deans
-  * 9/20/15
-  * model.js
+  * 9/21/15
+  * controller.js
   */
 
  /*
@@ -49,18 +49,12 @@
 
 
  SimController.prototype.setupDisplay = function() {
-     // create a brand new fringe
-     this.simModel.fringe.randomFringe(getRandomInt(5, 9));
-     // choose a question randomly
-     var question = this.simModel.questionBank.chooseQuestion(this.getModelValue('firstQuestion'), this.getModelValue('lastQuestion'));
-     // store the answer(s) to the question we chose in the last step
-     this.simModel.questionBank.setAnswers(this.simModel.fringe);
-     // draw the results for the last five questions
-     this.simView.questionBankView.drawAnswerHistory(this.simModel.questionBank.answerHistory);
-     // draw the fringe on the screen
-     this.simView.fringeView.drawFringe(this.simModel.fringe);
-     // display the next question
-     this.simView.questionBankView.presentQuestion(question);
+     // shows the question 
+     var question = this.simModel.questionBank.createQuestion();
+     // shows the let expression
+     var expression = this.simModel.questionBank.getLetExpression();
+     // shows the answer choices
+     var answerChoices = this.simModel.questionBank.getAnswerChoices();
  }
 
 

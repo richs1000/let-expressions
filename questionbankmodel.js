@@ -1,6 +1,6 @@
 /*
  * Tyler Deans
- * 9/20/15
+ * 9/21/15
  * questionbankmodel.js
  */
 
@@ -25,8 +25,17 @@ function QuestionBankModel(_simModel, choices, answer, letExpression) {
  */
 QuestionBankModel.prototype.createNewQuestion = function() {
     this.question = "What does silly3 evaluate to when called?";
+    return this.question;
 
 }
+
+QuestionBankModel.prototype.getLetExpression = function() {
+    return this.letExpression;
+}
+
+QuestionBankModel.prototype.getAnswerChoices = function() {
+    return this.choices;
+};
 
 /*
  * Compare the student's answer to the correct answer(s).

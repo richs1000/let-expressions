@@ -18,10 +18,11 @@ QuestionBankView.prototype.presentAnswerChoices = function() {
 }
 
 var main = function() {
-    $("input[value='answer1']").next().html("Answer1");
-    $("input[value='answer2']").next().html("Answer2");
-    $("input[value='answer3']").next().html("Answer3");
-    $("input[value='answer4']").next().html("Answer4");
+    $("#lblQuestion").text("What does silly3 evaluate to when called?");
+    $("#answer1").next().html("Answer1");
+    $("#answer2").next().html("Answer2");
+    $("#answer3").next().html("Answer3");
+    $("#answer4").next().html("Answer4");
 }
 
 $(document).ready(main);
