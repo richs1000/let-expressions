@@ -8,53 +8,51 @@
 		<link rel="stylesheet" type="text/css" href="style/style.css"/>
 		<link rel="stylesheet" type="text/css" href="libs/bootstrap/css/bootstrap.min.css">
 		<title>Let Expressions</title>
+		
 
 	</head>
 	<body>
+
+		<h2>Let Expressions</h2>
 		<div class="starter-template">
 			<div class="container">
-				 <!-- This is the first draft. Just to see what it should look like -->
-				 <h3>What does silly3 evaluate to when called?</h3>
-				 <p>fun silly3() =</p>
-				 <p>let</p>
-				 <p>val x = (let val x = 5 in x + 10 end);</p>
-				 <p>in</p>
-				 <p>(x, let val x = 2 in x end, let val x = 10 in  let val x = 2 in x end end)</p>
-				 <p>end</p>
 
-			</div>
+				<div class="form-group">
+					<label id="lblQuestion"></label>
+					<button id="btnStart" type="button" class="btn btn-primary">Start App</button>
+					<button id="btnSubmit" type="button" class="btn btn-primary" disabled="true">Submit</button>
+				</div>
 
-			<div class="answers">
-				<form action="">
-					<fieldset>
-						<p>
-							<input type="checkbox" id="answer1" value="first_checkbox" />(15, 2, 2)
-						</p>
-
-						<p>
-							<input type="checkbox" id="answer2" value="second_checkbox" /> (5, 5, 5)
-						</p>
-
-						<p>
-							<input type="checkbox" id="answer3" value="third_checkbox" /> (15, 2, 10)
-						</p>
-
-						<p>
-							<input type="checkbox" id="answer4" value="fourth_checkbox"/> (5, 2, 10)
-						</p>
-					</fieldset>
-					
-				</form>
-				
-
+				<div class="form-group">
+						<div id="letExp"></div>
+						<div>
+							<label><input type="checkbox" id="answer1" name="choice1" value="answer1"><span></span></label>
+						</div>
+						<div>
+							<label><input type="checkbox" id="answer2" name="choice2" value="answer2"><span></span></label>
+						</div>
+						<div>
+							<label><input type="checkbox" id="answer3" name="choice3" value="answer3"><span></span></label>
+						</div>
+						<div>
+							<label><input type="checkbox" id="answer4" name="choice4" value="answer4"><span></span></label>
+						</div>
+				</div>
 			</div>
 		</div>
-
+		
+		
 		<script src="https://d1rpkia8qpfj4t.cloudfront.net/js/pipit-0.62.min.js"></script>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="libs/jquery.min.js"></script>
+		<script src="libs/bootstrap.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="libs/bootstrap/js/bootstrap.min.js"></script>
+		<script src="questionbankmodel.js"></script>
+		<script src="model.js"></script>
+		<script src="questionbankview.js"></script>
+		<script src="view.js"></script>
+		<script src="controller.js"></script>
+		
 
 	</body>
 </html>

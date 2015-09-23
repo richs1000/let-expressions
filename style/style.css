@@ -1,34 +1,29 @@
-/* Change font in let expression to a serif font */
-div p{
-	padding-left: 15px;
+body{
+	background-attachment: fixed;
+	text-align: left;
 }
 
-.container p:nth-child(3){
-	padding-left: 40px;
+
+#lblQuestion {
+	font-size: 24px;
 }
 
-.container p:nth-child(4){
-	padding-left: 60px;
+.btn {
+	margin-top: 12px;
 }
 
-.container p:nth-child(5){
-	padding-left: 40px;
+#txtAnswer {
+	font-size: 24px;
 }
 
-.container p:nth-child(6){
-	padding-left: 60px;
+#txtFeedback {
+	font-size: 24px;
 }
 
-.container p:nth-child(7){
-	padding-left: 40px;
-}
-
-.answers {
-	padding-left: 375px;
-	font-size: 14px;
-}
-
-.container p{
-	font-family: "Courier New", Courier, monospace;
-	font-size: 20px;
+.answerBlock{
+	width:30px;
+	height:30px;
+	border: 1px inset black;
+	display: inline-block;
+	margin-right: 2px;
 }

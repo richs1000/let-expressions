@@ -36,74 +36,86 @@ SimView.prototype.setupControls = function() {
         $("#btnSubmit").prop('disabled', false);
     });
 
-    // Checks if any of the checkboxes were checked, if not sends an alert to the browser
-    var checkboxes = $("input[type='checkbox'");
+        // add event handler for submit button
+    $("#btnSubmit").click(function() {
 
-    checkboxes.click(function() {
-        if (!checkboxes.is(":checked")) {
-            alert("Please check on one of the answers below.")
-        };
+        // Checks if any of the checkboxes were checked, if not sends an alert to the browser
+        var checkboxes = $("input[type='checkbox']");
+
+        checkboxes.click(function() {
+            if (!checkboxes.is(":checked")) {
+                alert("Please check on one of the answers below.")
+            };
+        });
+
+        // Checks if the first checkbox was checked
+        if ($("#answer1").attr('checked')) {
+            var studentAnswer = $("answer1").val();
+            var rightAnswer = simController.simModel.questionBank.checkAnswer(studentAnswer);
+            // if they got the right answer
+            if (rightAnswer) {
+                // give them feedback
+                $("#txtFeedback").html("Right. The answer is " + studentAnswer);
+            } else {
+                // give them feedback
+                $("#txtFeedback").html("That is incorrect. The correct answer is " + simController.simModel.questionBank.answers[0]);
+            }
+        }
+        // Checks if the second checkbox was checked
+        else if ($("#answer2").attr('checked')) {
+            var studentAnswer = $("answer2").val();
+            var rightAnswer = simController.simModel.questionBank.checkAnswer(studentAnswer);
+
+            // if they got the right answer
+            if (rightAnswer) {
+                // give them feedback
+                $("#txtFeedback").html("Right. The answer is " + studentAnswer);
+            } else {
+                // give them feedback
+                $("#txtFeedback").html("That is incorrect. The correct answer is " + simController.simModel.questionBank.answers[0]);
+            }
+        }
+        // Checks if the third checkbox was checked
+        else if ($("#answer3").attr('checked')) {
+            var studentAnswer = $("answer3").val();
+            var rightAnswer = simController.simModel.questionBank.checkAnswer(studentAnswer);
+
+            // if they got the right answer
+            if (rightAnswer) {
+                // give them feedback
+                $("#txtFeedback").html("Right. The answer is " + studentAnswer);
+            } else {
+                // give them feedback
+                $("#txtFeedback").html("That is incorrect. The correct answer is " + simController.simModel.questionBank.answers[0]);
+            }
+        }
+        // Checks if the fourth checkbox was checked
+        else {
+            var studentAnswer = $("answer4").val();
+            var rightAnswer = simController.simModel.questionBank.checkAnswer(studentAnswer);
+
+            // if they got the right answer
+            if (rightAnswer) {
+                // give them feedback
+                $("#txtFeedback").html("Right. The answer is " + studentAnswer);
+            } else {
+                // give them feedback
+                $("#txtFeedback").html("That is incorrect. The correct answer is " + simController.simModel.questionBank.answers[0]);
+            }
+        }
+
+        // disable submit button
+        $("#btnSubmit").prop('disabled', true);
+        // disable text field where the user enters an answer
+        $("#txtAnswer").prop('disabled', true);
     });
-
-    // Checks if the first checkbox was checked
-    if ($("#answer1").attr('checked')) {
-        var studentAnswer = $("answer1").val();
-        var rightAnswer = simController.simModel.questionBank.checkAnswer(studentAnswer);
-
-        // if they got the right answer
-        if (rightAnswer) {
-            // give them feedback
-            $("#txtFeedback").html("Right. The answer is " + studentAnswer);
-        } else {
-            // give them feedback
-            $("#txtFeedback").html("That is incorrect. The correct answer is " + simController.simModel.questionBank.answers[0]);
+    // call the submit button click-handler if the user hits the enter key
+    $('#txtAnswer').keypress(function(e) {
+        if (e.which == 13) { //Enter key pressed
+            $('#btnSubmit').click(); //Trigger search button click event
         }
-    }
+    });
+    
 
-    // Checks if the second checkbox was checked
-    if ($("#answer2").attr('checked')) {
-        var studentAnswer = $("answer2").val();
-        var rightAnswer = simController.simModel.questionBank.checkAnswer(studentAnswer);
-
-        // if they got the right answer
-        if (rightAnswer) {
-            // give them feedback
-            $("#txtFeedback").html("Right. The answer is " + studentAnswer);
-        } else {
-            // give them feedback
-            $("#txtFeedback").html("That is incorrect. The correct answer is " + simController.simModel.questionBank.answers[0]);
-        }
-    }
-
-    // Checks if the third checkbox was checked
-    if ($("#answer3").attr('checked')) {
-        var studentAnswer = $("answer3").val();
-        var rightAnswer = simController.simModel.questionBank.checkAnswer(studentAnswer);
-
-        // if they got the right answer
-        if (rightAnswer) {
-            // give them feedback
-            $("#txtFeedback").html("Right. The answer is " + studentAnswer);
-        } else {
-            // give them feedback
-            $("#txtFeedback").html("That is incorrect. The correct answer is " + simController.simModel.questionBank.answers[0]);
-        }
-    }
-
-    // Checks if the fourth checkbox was checked
-    if ($("#answer4").attr('checked')) {
-        var studentAnswer = $("answer4").val();
-        var rightAnswer = simController.simModel.questionBank.checkAnswer(studentAnswer);
-
-        // if they got the right answer
-        if (rightAnswer) {
-            // give them feedback
-            $("#txtFeedback").html("Right. The answer is " + studentAnswer);
-        } else {
-            // give them feedback
-            $("#txtFeedback").html("That is incorrect. The correct answer is " + simController.simModel.questionBank.answers[0]);
-        }
-    }
-
-    // I need an event handler when the user clicks on the next button on Smart Sparrow
+    
 }
