@@ -1,3 +1,4 @@
+
 body{
 	background-attachment: fixed;
 	text-align: left;
@@ -26,4 +27,32 @@ body{
 	border: 1px inset black;
 	display: inline-block;
 	margin-right: 2px;
+}
+
+.noAnswer{
+	background:white;
+}
+
+.rightAnswer{
+    background:green;
+}
+
+.wrongAnswer{
+    background:red;
+}
+
+th {
+	text-align: center;
+	font-weight: bold;
+	vertical-align: baseline;
+}
+
+
+td {
+	vertical-align: middle;
+}
+
+#letExpression {
+	border-collapse: separate;
+	border-spacing: 10px;
 }

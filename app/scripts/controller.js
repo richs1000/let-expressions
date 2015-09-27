@@ -1,6 +1,6 @@
  /*
   * Tyler Deans
-  * 9/21/15
+  * 9/26/15
   * controller.js
   */
 
@@ -12,12 +12,12 @@
      this.simModel = new SimModel(this);
 
      // expose model data to Smart Sparrow
-     /*pipit.CapiAdapter.expose('mastery', this.simModel);
+     pipit.CapiAdapter.expose('mastery', this.simModel);
      pipit.CapiAdapter.expose('numerator', this.simModel);
      pipit.CapiAdapter.expose('denominator', this.simModel);
      pipit.CapiAdapter.expose('firstQuestion', this.simModel);
      pipit.CapiAdapter.expose('lastQuestion', this.simModel);
-     */
+     
 
      // let smart sparrow know that the sim is ready to accept values
      pipit.Controller.notifyOnReady();
@@ -49,12 +49,18 @@
 
 
  SimController.prototype.setupDisplay = function() {
-     // shows the question 
-     var question = this.simModel.questionBank.createQuestion();
-     // shows the let expression
-     var expression = this.simModel.questionBank.getLetExpression();
-     // shows the answer choices
-     var answerChoices = this.simModel.questionBank.getAnswerChoices();
+     // create a brand new let expression
+    this.simModel.letExpression.randomLetExpression();
+    // choose a question randomly
+    var question = this.simModel.questionBank.chooseQuestion(this.getModelValue('firstQuestion'), this.getModelValue('lastQuestion'));
+    // store the answer(s) to the question we chose in the last step
+    this.simModel.questionBank.setAnswers(this.simModel.letExpression);
+    // draw the results for the last five questions
+    this.simView.questionBankView.drawAnswerHistory(this.simModel.questionBank.answerHistory);
+    // draw the let expression on the screen
+    this.simView.letExpressionView.drawLetExpression(this.simModel.letExpression);
+    // display the next question
+    this.simView.questionBankView.presentQuestion(question);
  }
 
 
