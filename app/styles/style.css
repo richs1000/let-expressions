@@ -41,18 +41,10 @@ body{
     background:red;
 }
 
-th {
-	text-align: center;
-	font-weight: bold;
-	vertical-align: baseline;
-}
+pre {
+	
+	font-size: 14px;
 
 
-td {
-	vertical-align: middle;
 }
 
-#letExpression {
-	border-collapse: separate;
-	border-spacing: 10px;
-}

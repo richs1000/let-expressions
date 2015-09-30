@@ -1,6 +1,6 @@
 /*
  * Tyler Deans
- * September 24, 2015
+ * September 29, 2015
  */
 
 
@@ -9,7 +9,8 @@ function LetExpressionModel(_simModel) {
 	// save a link to the model
 	this.simModel = _simModel;
 	// store the fringe as an ordered list
-	this.randNumbers = [];
+	//this.randNumbers = [];
+
 }
 
 /*
@@ -17,35 +18,41 @@ function LetExpressionModel(_simModel) {
  */
 LetExpressionModel.prototype.randomLetExpression = function() {
 	this.randNumbers = [];
-	var x1 = function() {
-        var x = getRandomInt(1, 21);
-        this.randNumbers.push(x);
-        var num = getRandomInt(1, 21);
-        this.randNumbers.push(num);
-        return x + num;
-    }
+    this.answer = [];
+	
+    var ln1 = getRandomInt(1, 21);
+    this.randNumbers.push(ln1);
+    var ln2 = getRandomInt(1, 21);
+    this.randNumbers.push(ln2);
+    var x1 = ln1 + ln2;
+    this.answer.push(x1);
+    
+    var ln3 = getRandomInt(1, 21);
+    this.randNumbers.push(ln3);
+    
+     
+    var x2 = ln3;
+    this.answer.push(x2);
+    var ln4 = getRandomInt(1, 21);
+    this.randNumbers.push(ln4);
 
-    var x2 = function() {
-        var x = getRandomInt(1, 21);
-        this.randNumbers.push(x);
-        return x;
-    }
-
-    var x3 = function() {
-        var x = getRandomInt(1, 21);
-        this.randNumbers.push(x);
-
-        x = function() {
-            var n = getRandomInt(1, 21);
-            this.randNumbers.push(n);
-            return n;
-        }
-        return x();
-    }
-
-    var this.answer = [x1(), x2(), x3()];
-    var this.letExpressionString = "<code>let val x = (let val x = " + this.randNumbers[0] + " in x + " + this.randNumbers[1] +" end);</code>\n";
-    this.letExpressionString += "<code>in (x, let val x = " + this.randNumbers[2] + " in x end, let val x = " + this.randNumbers[3] + "in let val x = " + this.randNumbers[5] + " in x end end)</code>\n";
-    this.letExpressionString += "<code>end</code>\n";
-
+    var ln5 = getRandomInt(1, 21);
+    this.randNumbers.push(ln5); 
+    var x3 = ln5;
+    this.answer.push(x3);
+    
+    this.letExpressionString = "<pre>let\n";
+    this.letExpressionString += "     val x = (let val x = " + this.randNumbers[0] + " in x + " + this.randNumbers[1] +" end)\n";
+    this.letExpressionString += "in\n";
+    this.letExpressionString += "     (x, let val x = " + this.randNumbers[2] + " in x end, let val x = " + this.randNumbers[3] + " in let val x = " + this.randNumbers[4] + " in x end end)\n";
+    this.letExpressionString += "end</pre></br>";
+    
+    return this.answer;
 }
+
+LetExpressionModel.prototype.getLetExpression = function() {
+    return this.letExpressionString;
+}
+
+
+

@@ -52,7 +52,7 @@ SimView.prototype.setupControls = function() {
             $( "#txtFeedback" ).html("Right. The answer is " + studentAnswer);
         } else {
             // give them feedback
-            $( "#txtFeedback" ).html("That is incorrect. The correct answer is " + simController.simModel.questionBank.answers[0]);
+            $( "#txtFeedback" ).html("That is incorrect. The correct answer is " + "(" + simController.simModel.questionBank.answers[0] + ")");
         }
         // has mastery been demonstrated?
         if (simController.simModel.questionBank.masteryAchieved()) {
@@ -94,7 +94,7 @@ SimView.prototype.setupControls = function() {
         // clear the fringe
         $( "#letExpressionDiv" ).html('');
         // pass off to the controller to create and display a
-        // new graph and new question
+        // new let expression and new question
         simController.setupDisplay();
     });
 }
