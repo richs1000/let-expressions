@@ -72,22 +72,20 @@ QuestionBankModel.prototype.masteryAchieved = function() {
 /*
  * Compare the student's answer to the correct answer(s).
  */
-QuestionBankModel.prototype.checkAnswer = function (studentAnswer) {
+QuestionBankModel.prototype.checkAnswer = function(studentAnswer) {
     for (var i = 0; i < this.answers.length; i++) {
 
 
         // Compare the student's answer with the answer in the array ignoring any possible spaces
 
         // Checks if there are any whitespaces in the student's answer
-        if(studentAnswer.toString().indexOf(' ') >= 0)) {
+        if (studentAnswer.toString().indexOf(' ') >= 0) {
             // Trims all whitespace 
             var studentAnswerStr = studentAnswer.toString().replace(/\s+/g, '');
             if (this.answers[i].toString() == studentAnswerStr) {
                 return true;
             }
-        }
-
-        else if (this.answers[i].toString() == studentAnswer.toString()) {
+        } else if (this.answers[i].toString() == studentAnswer.toString()) {
             return true;
 
         }
@@ -101,16 +99,16 @@ QuestionBankModel.prototype.checkAnswer = function (studentAnswer) {
  */
 QuestionBankModel.prototype.createNewQuestions = function() {
     // Each question template is an array holding either strings
-  // or executable commands stored as strings.
-  this.questions = [
-     ["What does silly1 evaluate to when called?"],
-     ["What does silly2 evaluate to when called?"],
-     ["What does silly3 evaluate to when called?"],
-     ["What does silly4 evaluate to when called?"],
-     ["What does silly5 evaluate to when called?"],
-  ];
-  // the question index is used to rotate through the questions
-  this.questionIndex = 0;
+    // or executable commands stored as strings.
+    this.questions = [
+        ["What does silly1 evaluate to when called?"],
+        ["What does silly2 evaluate to when called?"],
+        ["What does silly3 evaluate to when called?"],
+        ["What does silly4 evaluate to when called?"],
+        ["What does silly5 evaluate to when called?"],
+    ];
+    // the question index is used to rotate through the questions
+    this.questionIndex = 0;
     // the answer(s) is/are stored in an array
     this.answers = [];
     // the actual question is stored in a string
@@ -155,5 +153,5 @@ QuestionBankModel.prototype.setAnswers = function(_letExpression) {
     this.answers.push(_letExpression.randomLetExpression());
     this.answers.push(_letExpression.randomLetExpression());
     this.answers.push(_letExpression.randomLetExpression());
-    
+
 }
