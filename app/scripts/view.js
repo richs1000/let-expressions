@@ -1,7 +1,8 @@
 /*
  * main.js
+ * Rich Simpson
  * Tyler Deans 
- * September 23, 2015
+ * February 13, 2016
  * This code implements a mastery-based exercise on graph
  * theory for integration with Smart Sparrow.
  *
@@ -31,8 +32,16 @@ SimView.prototype.setupControls = function() {
     $( "#btnStart" ).click(function() {
         // finish initializing the app
         simController.initializeController();
-        // disable start button
-        $( "#btnStart" ).prop('disabled', true);
+        /* The text area, submit and next question buttons
+         * remain hidden until the start app button is clicked.
+        */
+        $( "#txtAnswer" ).show();
+        $( "#historyText" ).show();
+        $( "#btnNextQuestion" ).show();
+        $( "#btnSubmit" ).show();
+        $( "#questionType" ).show();
+        // hide start button after being clicked
+        $( "#btnStart" ).hide();
         // enable submit button
         $( "#btnSubmit" ).prop('disabled', false);
     });

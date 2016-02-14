@@ -41,11 +41,7 @@ LetExpressionModel.prototype.randomLetExpression = function() {
     var x3 = ln5;
     this.answer.push(x3);
     
-    this.letExpressionString = "<pre>let\n";
-    this.letExpressionString += "     val x = (let val x = " + this.randNumbers[0] + " in x + " + this.randNumbers[1] +" end)\n";
-    this.letExpressionString += "in\n";
-    this.letExpressionString += "     (x, let val x = " + this.randNumbers[2] + " in x end, let val x = " + this.randNumbers[3] + " in let val x = " + this.randNumbers[4] + " in x end end)\n";
-    this.letExpressionString += "end</pre></br>";
+    this.letExpressionString = "<pre>fun silly1 (z: int)=\n";
     
     return this.answer;
 }

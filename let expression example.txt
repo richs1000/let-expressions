@@ -1,0 +1,11 @@
+After the following ML code is executed, what is ans bound to?
+
+fun silly1 (z : int) =
+  let
+    val x = if z > <random int> then z else <random int>
+    val y = x + z + <random int>
+  in
+    if x > y then x * <random int> else y * y
+  end
+
+val ans = silly1(<random int>)

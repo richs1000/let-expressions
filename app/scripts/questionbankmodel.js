@@ -1,6 +1,6 @@
 /*
  * Tyler Deans
- * 9/21/15
+ * February 13, 2016
  * questionbankmodel.js
  */
 
@@ -108,11 +108,11 @@ QuestionBankModel.prototype.createNewQuestions = function() {
     // Each question template is an array holding either strings
   // or executable commands stored as strings.
   this.questions = [
-     ["What does this let expression evaluate to when called?"],
-     ["What does this let expression evaluate to when called?"],
-     ["What does this let expression evaluate to when called?"],
-     ["What does this let expression evaluate to when called?"],
-     ["What does this let expression evaluate to when called?"],
+     ["After the following ML code is executed, what is ans bound to?"],
+     ["After the following ML code is executed, what is ans bound to?"],
+     ["After the following ML code is executed, what is ans bound to?"],
+     ["After the following ML code is executed, what is ans bound to?"],
+     ["After the following ML code is executed, what is ans bound to?"],
   ];
   // the question index is used to rotate through the questions
   this.questionIndex = 0;
