@@ -21,6 +21,7 @@ QuestionBankView.prototype.presentQuestion = function(_question) {
  * we want to draw 5 squares. Then fill in each square based
  * on whether the answer was correct or incorrect.
  */
+
 QuestionBankView.prototype.drawAnswerHistory = function(_answerHistory) {
     // clear the answer history display
     $( ".answerHistory" ).empty();
@@ -39,3 +40,4 @@ QuestionBankView.prototype.drawAnswerHistory = function(_answerHistory) {
         }
     }
 }
+

@@ -1,7 +1,8 @@
 /*
  * main.js
- * Tyler Deans 
- * September 23, 2015
+ * Rich Simpson
+ * Tyler Deans
+ * February 13, 2016
  * This code implements a mastery-based exercise on graph
  * theory for integration with Smart Sparrow.
  *
@@ -28,18 +29,26 @@ function SimView(_controller) {
 
 
 SimView.prototype.setupControls = function() {
-    $( "#btnStart" ).click(function() {
+    $("#btnStart").click(function() {
         // finish initializing the app
         simController.initializeController();
-        // disable start button
-        $( "#btnStart" ).prop('disabled', true);
+        /* The text area, submit and next question buttons
+         * remain hidden until the start app button is clicked.
+         */
+        $("#txtAnswer").show();
+        $("#historyText").show();
+        $("#btnNextQuestion").show();
+        $("#btnSubmit").show();
+        $("#questionType").show();
+        // hide start button after being clicked
+        $("#btnStart").hide();
         // enable submit button
-        $( "#btnSubmit" ).prop('disabled', false);
+        $("#btnSubmit").prop('disabled', false);
     });
     // add event handler for submit button
-    $( "#btnSubmit" ).click(function() {
+    $("#btnSubmit").click(function() {
         // check the answer
-        var studentAnswer = $( "#txtAnswer" ).val();
+        var studentAnswer = $("#txtAnswer").val();
         // record whether it was right or wrong
         var rightAnswer = simController.simModel.questionBank.checkAnswer(studentAnswer);
         // store the results
@@ -49,10 +58,10 @@ SimView.prototype.setupControls = function() {
         // if they got the right answer
         if (rightAnswer) {
             // give them feedback
-            $( "#txtFeedback" ).html("Right. The answer is " + studentAnswer);
+            $("#txtFeedback").html("Right. The answer is " + studentAnswer);
         } else {
             // give them feedback
-            $( "#txtFeedback" ).html("That is incorrect. The correct answer is " + simController.simModel.questionBank.answers[0]);
+            $("#txtFeedback").html("That is incorrect. The correct answer is " + simController.simModel.questionBank.answers[0]);
         }
         // has mastery been demonstrated?
         if (simController.simModel.questionBank.masteryAchieved()) {
@@ -64,37 +73,37 @@ SimView.prototype.setupControls = function() {
             simController.triggerCheck();
         } else {
             // enable next question button
-            $( "#btnNextQuestion" ).prop('disabled', false);
+            $("#btnNextQuestion").prop('disabled', false);
         }
         // disable submit button
-        $( "#btnSubmit" ).prop('disabled', true);
+        $("#btnSubmit").prop('disabled', true);
         // disable text field where the user enters an answer
-        $( "#txtAnswer" ).prop('disabled', true);
+        $("#txtAnswer").prop('disabled', true);
     });
     // call the submit button click-handler if the user hits the enter key
-    $( '#txtAnswer' ).keypress(function(e){
-            if(e.which == 13){//Enter key pressed
-                    $( '#btnSubmit' ).click();//Trigger search button click event
-            }
+    $('#txtAnswer').keypress(function(e) {
+        if (e.which == 13) { //Enter key pressed
+            $('#btnSubmit').click(); //Trigger search button click event
+        }
     });
     // add event handler for next question button
-    $( "#btnNextQuestion" ).click(function() {
+    $("#btnNextQuestion").click(function() {
         // disable next question button
-        $( "#btnNextQuestion" ).prop('disabled', true);
+        $("#btnNextQuestion").prop('disabled', true);
         // enable submit button
-        $( "#btnSubmit" ).prop('disabled', false);
+        $("#btnSubmit").prop('disabled', false);
         // erase the old question
-        $( "#lblQuestion" ).text('');
+        $("#lblQuestion").text('');
         // enable text field where the user enters an answer
-        $( "#txtAnswer" ).prop('disabled', false);
+        $("#txtAnswer").prop('disabled', false);
         // empty the text field where the user enters an answer
-        $( "#txtAnswer" ).val('');
+        $("#txtAnswer").val('');
         // clear the feedback from the last question
-        $( "#txtFeedback" ).html('');
+        $("#txtFeedback").html('');
         // clear the fringe
-        $( "#letExpressionDiv" ).html('');
+        $("#letExpressionDiv").html('');
         // pass off to the controller to create and display a
-        // new graph and new question
+        // new let expression and new question
         simController.setupDisplay();
     });
 }

@@ -1,6 +1,6 @@
 /*
  * Tyler Deans
- * 9/21/15
+ * February 13, 2016
  * questionbankmodel.js
  */
 
@@ -73,23 +73,14 @@ QuestionBankModel.prototype.masteryAchieved = function() {
  * Compare the student's answer to the correct answer(s).
  */
 QuestionBankModel.prototype.checkAnswer = function(studentAnswer) {
+    // Converts studentAnswer from a string to an integer
+    var studentAnswerInt = parseInt(studentAnswer);
     for (var i = 0; i < this.answers.length; i++) {
-
-
-        // Compare the student's answer with the answer in the array ignoring any possible spaces
-
-        // Checks if there are any whitespaces in the student's answer
-        if (studentAnswer.toString().indexOf(' ') >= 0) {
-            // Trims all whitespace 
-            var studentAnswerStr = studentAnswer.toString().replace(/\s+/g, '');
-            if (this.answers[i].toString() == studentAnswerStr) {
-                return true;
-            }
-        } else if (this.answers[i].toString() == studentAnswer.toString()) {
+        if (this.answers[i] === studentAnswerInt) {
             return true;
-
         }
     }
+
     return false;
 }
 
@@ -101,11 +92,11 @@ QuestionBankModel.prototype.createNewQuestions = function() {
     // Each question template is an array holding either strings
     // or executable commands stored as strings.
     this.questions = [
-        ["What does silly1 evaluate to when called?"],
-        ["What does silly2 evaluate to when called?"],
-        ["What does silly3 evaluate to when called?"],
-        ["What does silly4 evaluate to when called?"],
-        ["What does silly5 evaluate to when called?"],
+        ["After the following ML code is executed, what is ans bound to?"],
+        ["After the following ML code is executed, what is ans bound to?"],
+        ["After the following ML code is executed, what is ans bound to?"],
+        ["After the following ML code is executed, what is ans bound to?"],
+        ["After the following ML code is executed, what is ans bound to?"],
     ];
     // the question index is used to rotate through the questions
     this.questionIndex = 0;
@@ -121,7 +112,7 @@ QuestionBankModel.prototype.createNewQuestions = function() {
  */
 QuestionBankModel.prototype.chooseQuestion = function(_firstQuestion, _lastQuestion) {
     // choose a question index at random
-    this.questionIndex = getRandomInt(_firstQuestion, _lastQuestion + 1);
+    this.questionIndex = 0;
     // get the corresponding question template
     var questionTemplate = this.questions[this.questionIndex];
     // start with an empty question string
@@ -133,8 +124,7 @@ QuestionBankModel.prototype.chooseQuestion = function(_firstQuestion, _lastQuest
         // add it to the question string
         this.question = this.question + templateString;
     }
-    this.question += " Indicate your answer by putting the numbers between parenthesis.";
-    this.question += " The numbers should be separated by commas."
+    //console.log(this.question);
     return this.question;
 }
 
@@ -148,10 +138,20 @@ QuestionBankModel.prototype.setAnswers = function(_letExpression) {
     // Reset answers array
     this.answers = [];
     // Adds the answers to the question to the answers array
-    this.answers.push(_letExpression.randomLetExpression());
-    this.answers.push(_letExpression.randomLetExpression());
-    this.answers.push(_letExpression.randomLetExpression());
-    this.answers.push(_letExpression.randomLetExpression());
-    this.answers.push(_letExpression.randomLetExpression());
+    // Set the answer(s) to the question indicated by questionIndex.
 
+    if (this.questionIndex == 0) {
+        this.answers.push(_letExpression.randomLetExpression());
+
+    } else if (this.questionIndex == 1) {
+        this.answers.push(_letExpression.randomLetExpression());
+
+    } else if (this.questionIndex == 2) {
+        this.answers.push(_letExpression.randomLetExpression());
+
+    } else if (this.questionIndex == 3) {
+        this.answers.push(_letExpression.randomLetExpression());
+    } else {
+        this.answers.push(_letExpression.randomLetExpression());
+    }
 }

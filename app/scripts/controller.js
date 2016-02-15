@@ -9,7 +9,13 @@
   */
  function SimController() {
      // create a data model that exposes parameters to smart sparrow
-     this.simModel = new SimModel(this);
+     this.simModel = new SimModel(this, {
+        mastery: 'false',
+        numerator: 7,
+        denominator: 10,
+        firstQuestion: 0,
+        lastQuestion: 0,
+    });
 
      // expose model data to Smart Sparrow
      pipit.CapiAdapter.expose('mastery', this.simModel);
@@ -62,7 +68,6 @@
     // display the next question
     this.simView.questionBankView.presentQuestion(question);
  }
-
 
  // Create a new Controller for sim
  // The controller interacts with the model and the view

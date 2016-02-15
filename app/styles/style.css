@@ -15,10 +15,27 @@ body{
 
 #txtAnswer {
 	font-size: 24px;
+	display: none;
 }
 
 #txtFeedback {
 	font-size: 24px;
+}
+
+#historyText {
+	display: none;
+}
+
+#btnNextQuestion {
+	display: none;
+}
+
+#btnSubmit {
+	display: none;
+}
+
+#questionType {
+	display: none;
 }
 
 .answerBlock{
@@ -41,18 +58,7 @@ body{
     background:red;
 }
 
-th {
-	text-align: center;
-	font-weight: bold;
-	vertical-align: baseline;
+pre {
+	font-size: 14px;
 }
 
-
-td {
-	vertical-align: middle;
-}
-
-#letExpression {
-	border-collapse: separate;
-	border-spacing: 10px;
-}
