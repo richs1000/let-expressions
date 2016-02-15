@@ -44,7 +44,7 @@ LetExpressionModel.prototype.randomLetExpression = function() {
     if (xVariable > yVariable) {
         this.answer = xVariable * num;
     } else {
-        this.answer = yVariable * yVariable;
+        this.answer = 10 * yVariable;
     }
 
     this.letExpressionString = "<pre>fun silly1 (z: int) =\n";
@@ -52,7 +52,7 @@ LetExpressionModel.prototype.randomLetExpression = function() {
     this.letExpressionString += "		val x = if z > " + xValue1 + " then z else " + xValue2 + "\n";
     this.letExpressionString += "		val y = x + z + " + yValue + "\n";
     this.letExpressionString += "	in\n";
-    this.letExpressionString += "		if x > y then x * " + num + " else y * y\n";
+    this.letExpressionString += "		if x > y then x * " + num + " else 10 * y\n";
     this.letExpressionString += "	end\n";
     this.letExpressionString += "val ans = silly1(" + zValue + ")";
     this.letExpressionString += "</pre><br>";
